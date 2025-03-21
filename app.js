@@ -1,14 +1,14 @@
 const express = require('express');
 const app = express();
 const PORT = 3000;
+const fornecedoresController = require('./controllers/fornecedoresController');
 
 // Middleware para interpretar JSON
 app.use(express.json());
 
-// Rota básica
-app.get('/', (req, res) => {
-  res.send('Bem-vindo ao sistema de estoque!');
-});
+// Rotas de fornecedores
+app.post('/fornecedores', fornecedoresController.cadastrarFornecedor);
+app.get('/fornecedores', fornecedoresController.listarFornecedores);
 
 // Iniciar o servidor
 app.listen(PORT, () => {
